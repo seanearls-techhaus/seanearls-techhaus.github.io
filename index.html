@@ -2,33 +2,30 @@
 <html>
 <head>
     <title>Test Website</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            margin-top: 20px;
-        }
-    </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Welcome to our test website!</h1>
-        <p>Click the button below to change the background color of the page.</p>
-        <button id="changeColorButton">Change Color</button>
-    </div>
-    <script>
-        var colors = ["#FF5733","#C70039","#900C3F","#581845", "#DAF7A6","#FFC300","#FF5733","#C70039"];
-        document.getElementById('changeColorButton').onclick = function() {
-            document.body.style.backgroundColor = colors[Math.floor(Math.random()*colors.length)];
-        }
+    <h1>Welcome to our test website!</h1>
+
+    <script type="text/javascript">
+        // Include Klaviyo's JavaScript SDK
+        var _learnq = _learnq || [];
+        _learnq.push(['account', 'SEPBCg']);
+
+        // Define some dummy metadata
+        var metadata = {
+            dummy_data_1: "Test Data 1",
+            dummy_data_2: "Test Data 2"
+        };
+
+        // Identify a user
+        _learnq.push(['identify', {
+            '$email' : 'testuser@testwebsite.com', // the user's email
+        }]);
+
+        // Track an event with Klaviyo
+        _learnq.push(['track', 'Viewed Product', metadata]);
     </script>
+    <script type="text/javascript" src="//static.klaviyo.com/onsite/js/klaviyo.js?company_id=SEPBCg"></script>
 </body>
 </html>
+
