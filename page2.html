@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Test Website</title>
+    <title>Page 2</title>
 </head>
 <body>
-    <h1>Testing page 2</h1>
-
-    <button onclick="location.href='page2.html'" type="button">
-        Go to Page 2
-    </button>
+    <h1>Welcome to Page 2!</h1>
+    <p>This is the second page of our test website.</p>
 
     <script type="text/javascript">
         // Include Klaviyo's JavaScript SDK
@@ -23,11 +20,11 @@
 
         // Identify a user
         _learnq.push(['identify', {
-            '$email' : 'sean@testwebsite.com', // the user's email
+            '$email' : 'test3user@testwebsite.com', // the user's email
         }]);
 
         // Track an event with Klaviyo
-        _learnq.push(['track', 'Viewed Product', metadata]);
+        _learnq.push(['track', 'Visited Page 2', metadata]);
     </script>
     <script type="text/javascript" src="//static.klaviyo.com/onsite/js/klaviyo.js?company_id=SEPBCg"></script>
 </body>
