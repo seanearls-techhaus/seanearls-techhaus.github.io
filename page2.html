@@ -2,10 +2,6 @@
 <html>
 <head>
     <title>Page 2</title>
-</head>
-<body>
-    <h1>Welcome to Page 2!</h1>
-    <p>This is the second page of our test website.</p>
 
     <script type="text/javascript">
         // Function to get query parameters from URL
@@ -19,6 +15,9 @@
         // Get email from URL
         var email = getQueryParameter('email');
 
+    </script>
+
+    <script type="text/javascript">
         // Include Klaviyo's JavaScript SDK
         var _learnq = _learnq || [];
         _learnq.push(['account', 'SEPBCg']);
@@ -38,10 +37,16 @@
         _learnq.push(['track', 'Visited Page 2', metadata]);
     </script>
 
+    <script type="text/javascript" src="//static.klaviyo.com/onsite/js/klaviyo.js?company_id=SEPBCg"></script>
+
+</head>
+<body>
+    <h1>Site 1 - Page 2</h1>
+    
     <button onclick="location.href='https://seanearls.github.io/index.html?email=' + email;" type="button">
-        Go to Site 2.
+        Go to Site 2 - Page 1
     </button> 
 
-    <script type="text/javascript" src="//static.klaviyo.com/onsite/js/klaviyo.js?company_id=SEPBCg"></script>
+    
 </body>
 </html>

@@ -2,11 +2,10 @@
 <html>
 <head>
     <title>Test Website</title>
-</head>
-<body>
-    <h1>Testing page 2</h1>
 
-    
+    <script type="text/javascript">
+        var email = 'email@email.com';
+    </script>
 
     <script type="text/javascript">
         // Include Klaviyo's JavaScript SDK
@@ -19,8 +18,6 @@
             dummy_data_2: "Test Data 2"
         };
 
-        var email = 'sean123@test123.com'
-
         // Identify a user
         _learnq.push(['identify', {
             '$email' : email, // the user's email
@@ -30,10 +27,16 @@
         _learnq.push(['track', 'Viewed Product', metadata]);
     </script>
 
+    <script type="text/javascript" src="//static.klaviyo.com/onsite/js/klaviyo.js?company_id=SEPBCg"></script>
+
+</head>
+<body>
+    <h1>Site 1 - Page 1</h1>
+
     <button onclick="location.href='page2.html?email=' + email;" type="button">
-        Go to Page 2
+        Go to Site 1 - Page 2
     </button>
 
-    <script type="text/javascript" src="//static.klaviyo.com/onsite/js/klaviyo.js?company_id=SEPBCg"></script>
+    
 </body>
 </html>
