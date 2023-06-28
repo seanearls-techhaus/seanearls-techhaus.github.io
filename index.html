@@ -6,9 +6,7 @@
 <body>
     <h1>Testing page 2</h1>
 
-    <button onclick="location.href='page2.html'" type="button">
-        Go to Page 2
-    </button>
+    
 
     <script type="text/javascript">
         // Include Klaviyo's JavaScript SDK
@@ -21,14 +19,21 @@
             dummy_data_2: "Test Data 2"
         };
 
+        var email = 'sean@test.com'
+
         // Identify a user
         _learnq.push(['identify', {
-            '$email' : 'sean@testwebsite.com', // the user's email
+            '$email' : email, // the user's email
         }]);
 
         // Track an event with Klaviyo
         _learnq.push(['track', 'Viewed Product', metadata]);
     </script>
+
+    <button onclick="location.href='page2.html?email=' + email;" type="button">
+        Go to Page 2
+    </button>
+    
     <script type="text/javascript" src="//static.klaviyo.com/onsite/js/klaviyo.js?company_id=SEPBCg"></script>
 </body>
 </html>
