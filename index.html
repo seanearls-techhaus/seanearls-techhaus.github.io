@@ -4,9 +4,24 @@
     <title>Test Website</title>
 
     <script type="text/javascript">
-        var email = 'test@testhausaustralia.com';
+        // Function to set a cookie
+        function setCookie(name, value, days) {
+            var expires = "";
+            if (days) {
+                var date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = "; expires=" + date.toUTCString();
+            }
+            document.cookie = name + "=" + (value || "") + expires + "; path=/";
+        }
+
+        // Get the email from the URL and set the cookie
+        var email = 'cookie@test.com'; // Default email
+        setCookie('userEmail', email, 1); // Set the cookie with a name and expiration (1 day)
+
     </script>
 
+    <!-- Klaviyo tracking code -->
     <script type="text/javascript">
         // Include Klaviyo's JavaScript SDK
         var _learnq = _learnq || [];
@@ -35,7 +50,7 @@
 
     <div class="klaviyo-form-TEwA9H"></div>
 
-    <button onclick="location.href='page2.html?email=' + email;" type="button">
+    <button onclick="location.href='page2.html';" type="button">
         Go to Site 1 - Page 2
     </button>
     
