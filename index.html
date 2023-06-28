@@ -16,7 +16,7 @@
         }
 
         // Get the email from the URL and set the cookie
-        var email = 'cookie@test.com'; // Default email
+        var email = 'cookie2@test.com'; // Default email
         setCookie('userEmail', email, 1); // Set the cookie with a name and expiration (1 day)
 
     </script>
@@ -27,10 +27,11 @@
         var _learnq = _learnq || [];
         _learnq.push(['account', 'SEPBCg']);
 
+        var pageUrl = window.location.href;
+
         // Define some dummy metadata
         var metadata = {
-            dummy_data_1: "Visited first page with cookie.",
-            dummy_data_2: "Viewed product + cookie."
+            page_url: pageUrl
         };
 
         // Identify a user
@@ -39,7 +40,7 @@
         }]);
 
         // Track an event with Klaviyo
-        _learnq.push(['track', 'Viewed Product', metadata]);
+        _learnq.push(['track', 'User Page Tracking', metadata]);
     </script>
 
     <script type="text/javascript" src="//static.klaviyo.com/onsite/js/klaviyo.js?company_id=SEPBCg"></script>
