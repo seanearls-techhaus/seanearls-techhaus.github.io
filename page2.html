@@ -14,32 +14,33 @@
             }
             return "";
         }
-
-        // Get the email from the cookie
-        var email = getCookie('userEmailCookieTest');
-
     </script>
 
     <!-- Klaviyo tracking code -->
     <script type="text/javascript">
-        // Include Klaviyo's JavaScript SDK
-        var _learnq = _learnq || [];
-        _learnq.push(['account', 'SEPBCg']);
+        window.onload = function() {
+            // Get the email from the cookie
+            var email = getCookie('userEmailCookieTest');
 
-        var pageUrl = window.location.href;
+            // Include Klaviyo's JavaScript SDK
+            var _learnq = _learnq || [];
+            _learnq.push(['account', 'SEPBCg']);
 
-        // Define some dummy metadata
-        var metadata = {
-            page_url: pageUrl
-        };
+            var pageUrl = window.location.href;
 
-        // Identify a user
-        _learnq.push(['identify', {
-            '$email' : email, // the user's email
-        }]);
+            // Define some dummy metadata
+            var metadata = {
+                page_url: pageUrl
+            };
 
-        // Track an event with Klaviyo
-        _learnq.push(['track', 'User Page Tracking', metadata]);
+            // Identify a user
+            _learnq.push(['identify', {
+                '$email' : email, // the user's email
+            }]);
+
+            // Track an event with Klaviyo
+            _learnq.push(['track', 'User Page Tracking', metadata]);
+        }
     </script>
 
     <script type="text/javascript" src="//static.klaviyo.com/onsite/js/klaviyo.js?company_id=SEPBCg"></script>
