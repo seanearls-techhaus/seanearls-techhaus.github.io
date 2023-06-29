@@ -15,10 +15,26 @@
             document.cookie = name + "=" + (value || "") + expires + "; path=/";
         }
 
-        // Get the email from the URL and set the cookie
-        var email = 'cookie2@test.com'; // Default email
-        setCookie('userEmail', email, 1); // Set the cookie with a name and expiration (1 day)
+        // Function to handle form submission
+        function submitForm() {
+            var email = document.getElementById('email-input').value;
+            setCookie('userEmailCookieTest', email, 1); // Set the cookie with the entered email
+            
+            // Update Klaviyo identification with the new email
+            _learnq.push(['identify', {
+                '$email': email
+            }]);
 
+            // Track an event with Klaviyo
+            var pageUrl = window.location.href;
+            var metadata = {
+                page_url: pageUrl
+            };
+            _learnq.push(['track', 'User Page Tracking', metadata]);
+
+            // Redirect to the next page
+            window.location.href = 'page2.html';
+        }
     </script>
 
     <!-- Klaviyo tracking code -->
@@ -51,8 +67,11 @@
 
     <div class="klaviyo-form-TEwA9H"></div>
 
-    <button onclick="location.href='page2.html';" type="button">
-        Go to Site 1 - Page 2
+    <label for="email-input">Email:</label>
+    <input type="email" id="email-input" name="email" required>
+
+    <button onclick="submitForm();" type="button">
+        Submit
     </button>
     
 </body>
