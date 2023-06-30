@@ -28,56 +28,41 @@
     <script type="text/javascript">
         document.addEventListener('DOMContentLoaded', function(event) {
 
-            //var formElement = document.querySelector('.klaviyo-form-TEwA9H form');
-
-            //formElement.addEventListener('submit', function(event) {
-             //   event.preventDefault();
-
-              //  var emailInput = formElement.querySelector('input[name="email"]');
-               // var email = emailInput.value;
-
-                //console.log('Email: ', email);
-
-                
-            //})
-
-            // Include Klaviyo's JavaScript SDK
-            var _learnq = window._learnq || [];
+            var_learnq = window._learnq || [];
             _learnq.push(['account', 'SEPBCg']);
             console.log("Dom content loaded");
 
-            //document.addEventListener('klaviyo:onload', function(event) {
-                // Function to handle form submissions
-                _learnq.push(['onFormsSubmitSuccess', function($event, response) {
-                    console.log(response);
-                    console.log('test');
+            var formElement = document.querySelector('.klaviyo-form-TEwA9H form');
 
-                    // Try accessing the email with a safer method
-                    var email = response?.data?.email || "";
+            if (formElement) {
+                formElement.addEventListener('submit', function(event) {
+                    event.preventDefault();
+
+                    var emailInput = formElement.querySelector('input[name="email"]');
+                    var email = emailInput.value;
+
+                    console.log('Email: ', email);
                     if (email) {
-                        setCookie('userEmailCookieTest', email, 1); // Set the cookie with the entered email
+                        setCookie('userEmailKla', email, 1);
 
                         var pageUrl = window.location.href;
 
-                        // Define some dummy metadata
                         var metadata = {
                             page_url: pageUrl
                         };
 
-                        // Identify a user
                         _learnq.push(['identify', {
-                            '$email': email // the user's email
+                            '$email': email
                         }]);
 
-                        // Track an event with Klaviyo
                         _learnq.push(['track', 'User Page Tracking', metadata]);
 
-                        // Redirect to the next page
                         window.location.href = 'page2.html';
                     }
-                }]);
-            });
-       // });
+                    
+                });
+            }
+        });
     </script>
     
 </body>
