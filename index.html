@@ -30,32 +30,39 @@
             // Include Klaviyo's JavaScript SDK
             var _learnq = _learnq || [];
             _learnq.push(['account', 'SEPBCg']);
-
-            // Function to handle form submissions
-            _learnq.push(['onFormsSubmitSuccess', function ($event, response) {
-                console.log(response);
-                var email = response.data.email;  // Get the email from the form submission
-                setCookie('userEmailCookieTest', email, 1); // Set the cookie with the entered email
-                
-                var pageUrl = window.location.href;
-
-                // Define some dummy metadata
-                var metadata = {
-                    page_url: pageUrl
-                };
-
-                // Identify a user
-                _learnq.push(['identify', {
-                    '$email': email // the user's email
+            
+            document.addEventListener('klaviyo:onload', function(event){
+                // Function to handle form submissions
+                _learnq.push(['onFormsSubmitSuccess', function ($event, response) {
+                    console.log(response);
+                    
+                    // Try accessing the email with a safer method
+                    var email = response?.data?.email || "";  
+                    if(email){
+                        setCookie('userEmailCookieTest', email, 1); // Set the cookie with the entered email
+                        
+                        var pageUrl = window.location.href;
+    
+                        // Define some dummy metadata
+                        var metadata = {
+                            page_url: pageUrl
+                        };
+    
+                        // Identify a user
+                        _learnq.push(['identify', {
+                            '$email': email // the user's email
+                        }]);
+    
+                        // Track an event with Klaviyo
+                        _learnq.push(['track', 'User Page Tracking', metadata]);
+    
+                        // Redirect to the next page
+                        window.location.href = 'page2.html';
+                    }
                 }]);
-
-                // Track an event with Klaviyo
-                _learnq.push(['track', 'User Page Tracking', metadata]);
-
-                // Redirect to the next page
-                window.location.href = 'page2.html';
-            }]);
+            });
         });
     </script>
+    
 </body>
 </html>
