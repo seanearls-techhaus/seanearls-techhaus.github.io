@@ -26,9 +26,7 @@
     <div class="klaviyo-form-TEwA9H"></div>
     
     <script type="text/javascript">
-        window.onload = function() {
-            console.log('window loaded');
-
+        document.addEventListener('DOMContentLoaded', (event) => {
             // Include Klaviyo's JavaScript SDK
             var _learnq = window._learnq || [];
             _learnq.push(['account', 'SEPBCg']);
@@ -38,6 +36,7 @@
                 // Function to handle form submissions
                 _learnq.push(['onFormsSubmitSuccess', function ($event, response) {
                     console.log(response);
+                    console.log('test');
                     
                     // Try accessing the email with a safer method
                     var email = response?.data?.email || "";  
@@ -64,7 +63,7 @@
                     }
                 }]);
             });
-        };
+        });
     </script>
     
 </body>
