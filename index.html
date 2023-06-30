@@ -26,6 +26,7 @@
 
         // Function to handle form submissions
         _learnq.push(['onFormsSubmitSuccess', function ($event, response) {
+            console.log(response);
             var email = response.data.email;  // Get the email from the form submission
             setCookie('userEmailCookieTest', email, 1); // Set the cookie with the entered email
             
