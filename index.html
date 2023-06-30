@@ -26,38 +26,38 @@
     <div class="klaviyo-form-TEwA9H"></div>
     
     <script type="text/javascript">
-        document.addEventListener('DOMContentLoaded', (event) => {
+        document.addEventListener('DOMContentLoaded', function(event) {
             // Include Klaviyo's JavaScript SDK
             var _learnq = window._learnq || [];
             _learnq.push(['account', 'SEPBCg']);
             console.log("Dom content loaded");
-            
-            document.addEventListener('klaviyo:onload', function(event){
+
+            document.addEventListener('klaviyo:onload', function(event) {
                 // Function to handle form submissions
-                _learnq.push(['onFormsSubmitSuccess', function ($event, response) {
+                _learnq.push(['onFormsSubmitSuccess', function($event, response) {
                     console.log(response);
                     console.log('test');
-                    
+
                     // Try accessing the email with a safer method
-                    var email = response?.data?.email || "";  
-                    if(email){
+                    var email = response?.data?.email || "";
+                    if (email) {
                         setCookie('userEmailCookieTest', email, 1); // Set the cookie with the entered email
-                        
+
                         var pageUrl = window.location.href;
-    
+
                         // Define some dummy metadata
                         var metadata = {
                             page_url: pageUrl
                         };
-    
+
                         // Identify a user
                         _learnq.push(['identify', {
                             '$email': email // the user's email
                         }]);
-    
+
                         // Track an event with Klaviyo
                         _learnq.push(['track', 'User Page Tracking', metadata]);
-    
+
                         // Redirect to the next page
                         window.location.href = 'page2.html';
                     }
