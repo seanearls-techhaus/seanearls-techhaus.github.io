@@ -28,7 +28,7 @@
     <script type="text/javascript">
         document.addEventListener('DOMContentLoaded', (event) => {
             // Include Klaviyo's JavaScript SDK
-            var _learnq = _learnq || [];
+            var _learnq = window._learnq || [];
             _learnq.push(['account', 'SEPBCg']);
             
             document.addEventListener('klaviyo:onload', function(event){
