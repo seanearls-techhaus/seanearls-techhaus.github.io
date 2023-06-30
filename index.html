@@ -26,7 +26,9 @@
     <div class="klaviyo-form-TEwA9H"></div>
     
     <script type="text/javascript">
-        document.addEventListener('DOMContentLoaded', (event) => {
+        window.onload = function() {
+            console.log('window loaded');
+
             // Include Klaviyo's JavaScript SDK
             var _learnq = window._learnq || [];
             _learnq.push(['account', 'SEPBCg']);
@@ -62,7 +64,7 @@
                     }
                 }]);
             });
-        });
+        };
     </script>
     
 </body>
