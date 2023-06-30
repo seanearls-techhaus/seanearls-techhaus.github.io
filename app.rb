@@ -16,5 +16,5 @@ post '/submit_email' do
 end
 
 get '/clear_cookie' do
-    pages_controller.refresh_cookie
+    pages_controller.clear_cookie_cookie
 end
