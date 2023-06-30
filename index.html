@@ -17,7 +17,6 @@
             document.cookie = cookieString;
         }
     </script>
-    <script type="text/javascript" src="//static.klaviyo.com/onsite/js/klaviyo.js?company_id=SEPBCg"></script>
 
 </head>
 <body>
@@ -26,43 +25,48 @@
     <div class="klaviyo-form-TEwA9H"></div>
     
     <script type="text/javascript">
-        document.addEventListener('DOMContentLoaded', function(event) {
+        var _learnq = _learnq || [];
 
-            var _learnq = window._learnq || [];
-            _learnq.push(['account', 'SEPBCg']);
-            console.log("Dom content loaded");
+        _learnq.push(['account', 'SEPBCg']); // replace with your public API key
 
-            var formElement = document.querySelector('.klaviyo-form-TEwA9H form');
-
-            if (formElement) {
-                formElement.addEventListener('submit', function(event) {
-                    event.preventDefault();
-
-                    var emailInput = formElement.querySelector('input[name="email"]');
-                    var email = emailInput.value;
-
-                    console.log('Email: ', email);
-                    if (email) {
-                        setCookie('userEmailKla', email, 1);
-
-                        var pageUrl = window.location.href;
-
-                        var metadata = {
-                            page_url: pageUrl
-                        };
-
-                        _learnq.push(['identify', {
-                            '$email': email
-                        }]);
-
-                        _learnq.push(['track', 'User Page Tracking', metadata]);
-
-                        window.location.href = 'page2.html';
-                    }
-                    
-                });
+        // Define the onSubmitSuccess callback for the form.
+        _learnq.push(['forms', {
+            onSubmitSuccess: function ($form, response) {
+                // Form submission was successful.
+        
+                // Get the email input field value.
+                var email = $form.find('input[name="email"]').val();
+        
+                // Set a cookie with the email value.
+                setCookie('userEmailKla', email, 1);
+        
+                // Push data to Klaviyo
+                var pageUrl = window.location.href;
+        
+                var metadata = {
+                    page_url: pageUrl
+                };
+        
+                _learnq.push(['identify', {
+                    '$email': email
+                }]);
+        
+                _learnq.push(['track', 'User Page Tracking', metadata]);
+        
+                // Redirect to page2.html
+                window.location.href = 'page2.html';
             }
-        });
+        }]);
+
+        // Load the Klaviyo scripts.
+        (function () {
+            var b = document.createElement('script');
+            b.type = 'text/javascript';
+            b.async = true;
+            b.src = '//static.klaviyo.com/onsite/js/klaviyo.js?company_id=SEPBCg'; // replace with your public API key
+            var a = document.getElementsByTagName('script')[0];
+            a.parentNode.insertBefore(b, a);
+        })();
     </script>
     
 </body>
