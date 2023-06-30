@@ -54,10 +54,6 @@
         
                 _learnq.push(['track', 'User Page Tracking', metadata]);
         
-                // Redirect to page2.html
-                window.setTimeout(function() {
-                    window.location.href = 'page2.html';
-                }, 2000);
             }
         }]);
 
@@ -71,6 +67,7 @@
             a.parentNode.insertBefore(b, a);
         })();
     </script>
+    <button onclick="window.location.href='page2.html'">Go to Page 2</button>
     
 </body>
 </html>
