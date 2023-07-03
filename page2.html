@@ -1,9 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Site 1 - Page 2</title>
-
+    <title>Test Website</title>
     <script type="text/javascript">
+        // Function to set a cookie
+        function setCookie(name, value, days) {
+            var expires = "";
+            if (days) {
+                var date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = "; expires=" + date.toUTCString();
+            }
+            var cookieString = name + "=" + (value || "") + expires + "; SameSite=None; Secure; path=/";
+            document.cookie = cookieString;
+        }
 
         // Function to get the value of a cookie
         function getCookie(name) {
@@ -14,48 +24,46 @@
             }
             return "";
         }
-    </script>
 
-    <!-- Klaviyo tracking code -->
-    <script type="text/javascript">
-        window.onload = function() {
-            // Get the email from the cookie
+        // Function to initialize Klaviyo on page 2
+        function initializeKlaviyo() {
             var email = getCookie('userEmailKla');
-            console.log("Email: ", email);
-
-            // Include Klaviyo's JavaScript SDK
             var klaviyo = window.klaviyo || [];
-            klaviyo.push(['publicApiKey', 'SEPBCg']);
-            console.log(klaviyo.isIdentified());
+            klaviyo.push(['publicApiKey', 'SEPBCg']); // replace with your public API key
 
-            var pageUrl = window.location.href;
-
-            // Define some dummy metadata
-            var metadata = {
-                page_url: pageUrl
-            };
-            console.log("email: " + email);
-
-            // Identify a user
-            klaviyo.push(['identify', {
-                '$email' : email, // the user's email
+            // Define the onSubmitSuccess callback for the form.
+            klaviyo.push(['forms', {
+                onSubmitSuccess: function ($form, response) {
+                    // Form submission was successful.
+                    var email = $form.find('input[name="email"]').val();
+                    setCookie('userEmailKla', email, 1);
+                    var pageUrl = window.location.href;
+                    var metadata = {
+                        page_url: pageUrl
+                    };
+                    klaviyo.push(['identify', {
+                        '$email': email
+                    }]);
+                    klaviyo.push(['track', 'User Page Tracking', metadata]);
+                }
             }]);
-
-            // Track an event with Klaviyo
-            klaviyo.push(['track', 'User Page Tracking', metadata]);
         }
+
+        // Load the Klaviyo scripts.
+        (function () {
+            var b = document.createElement('script');
+            b.type = 'text/javascript';
+            b.async = true;
+            b.src = '//static.klaviyo.com/onsite/js/klaviyo.js?company_id=SEPBCg'; // replace with your public API key
+            b.onload = initializeKlaviyo; // Initialize Klaviyo after the script is loaded
+            var a = document.getElementsByTagName('script')[0];
+            a.parentNode.insertBefore(b, a);
+        })();
     </script>
-
-    <script type="text/javascript" src="//static.klaviyo.com/onsite/js/klaviyo.js?company_id=SEPBCg"></script>
-
 </head>
 <body>
-    <h1>Site 1 - Page 2</h1>
-    
-    <button onclick="location.href='https://seanearls.github.io/index.html'" type="button">
-        Go to Site 2 - Page 1
-    </button> 
-
-    
+    <h1>Site 1 - Page 1</h1>
+    <div class="klaviyo-form-TEwA9H"></div>
+    <button onclick="window.location.href='page2.html'">Go to Page 2</button>
 </body>
 </html>
