@@ -1,25 +1,35 @@
-class PagesController
-  def site1(email)
-    @email = email
-    erb :site1, :locals => { :email => @email }
+require 'sinatra/base'
+
+class PagesController < Sinatra::Base
+  get '/site1' do
+    @email = request.cookies['userEmail']
+    erb :site1
   end
 
-  def site2(email)
-    @email = email
-    erb :site2, :locals => { :email => @email }
+  get '/site2' do
+    @email = request.cookies['userEmail']
+    erb :site2
   end
 
-  def submit_email(email)
+  post '/submit_email' do
+    email = params[:email]
     if email.nil? || email.empty?
-        redirect '/site1'
+      redirect '/site1'
     else
-        # Perform any additional logic with the email, such as setting a cookie
-        response.set_cookie('userEmail', value: email)
-        redirect '/site2'
+      response.set_cookie('userEmail',
+      {
+          :value => email,
+          :path => "/",
+          :expires => Time.now + 3600,
+          :secure => request.secure?,
+          :httponly =>true,
+          :samesite => "Strict"
+      })
+      redirect '/site2'
     end
   end
 
-  def clear_cookie
+  get '/clear_cookie' do
     response.delete_cookie('userEmail')
     redirect '/site1'
   end

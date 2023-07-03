@@ -2,24 +2,10 @@
 <html>
 <head>
     <title>Site 2</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.1/js.cookie.min.js"></script>
     <script type="text/javascript" src="//static.klaviyo.com/onsite/js/klaviyo.js?company_id=SEPBCg"></script>
 </head>
 <body>
     <h1>Site 2</h1>
-    <p id="email-display"></p>
-
-    <script>
-        var _learnq = _learnq || [];
-        _learnq.push(['account', 'SEPBCg']);
-        _learnq.push(['identify', {'$email': ''}]);
-        _learnq.push(['track', '$pageview', {'$title': 'Site 2'}]);
-
-        var email = Cookies.get('userEmail');
-        document.getElementById('email-display').innerText = 'Email from cookie: ' + email;
-        _learnq.push(['identify', {'$email': email}]);
-        _learnq.push(['track', '$pageview', {'$title': 'Site 2'}]);
-    </script>
+    <p id="email-display">Email from cookie: <%= @email %></p>
 </body>
 </html>
-

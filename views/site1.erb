@@ -2,7 +2,6 @@
 <html>
 <head>
     <title>Site 1</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.1/js.cookie.min.js"></script>
     <script type="text/javascript" src="//static.klaviyo.com/onsite/js/klaviyo.js?company_id=SEPBCg"></script>
 </head>
 <body>
@@ -13,20 +12,5 @@
         <input type="submit" value="Submit">
     </form>
 
-    <script>
-        var _learnq = _learnq || [];
-        _learnq.push(['account', 'SEPBCg']);
-        _learnq.push(['identify', {'$email': ''}]);
-        _learnq.push(['track', '$pageview', {'$title': 'Site 1'}]);
-
-        document.getElementById('email-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            var email = document.getElementById('email').value;
-            Cookies.set('userEmail', email);
-            _learnq.push(['identify', {'$email': email}]);
-            _learnq.push(['track', '$pageview', {'$title': 'Site 1'}]);
-            location.href = '/site2';
-        });
-    </script>
 </body>
 </html>
