@@ -24,9 +24,9 @@
             console.log("Email: ", email);
 
             // Include Klaviyo's JavaScript SDK
-            var _learnq = window._learnq || [];
-            _learnq.push(['account', 'SEPBCg']);
-            console.log(_learnq.isidentified());
+            var klaviyo = window.klaviyo || [];
+            klaviyo.push(['publicApiKey', 'SEPBCg']);
+            console.log(klaviyo.isIdentified());
 
             var pageUrl = window.location.href;
 
@@ -37,12 +37,12 @@
             console.log("email: " + email);
 
             // Identify a user
-            _learnq.push(['identify', {
+            klaviyo.push(['identify', {
                 '$email' : email, // the user's email
             }]);
 
             // Track an event with Klaviyo
-            _learnq.push(['track', 'User Page Tracking', metadata]);
+            klaviyo.push(['track', 'User Page Tracking', metadata]);
         }
     </script>
 
