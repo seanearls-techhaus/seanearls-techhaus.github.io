@@ -25,13 +25,12 @@
     <div class="klaviyo-form-TEwA9H"></div>
     
     <script type="text/javascript">
-        console.log('219pm');
-        var _learnq = _learnq || [];
+        var klaviyo = window.klaviyo || [];
 
-        _learnq.push(['account', 'SEPBCg']); // replace with your public API key
+        klaviyo.push(['publicApiKey', 'SEPBCg']); // replace with your public API key
 
         // Define the onSubmitSuccess callback for the form.
-        _learnq.push(['forms', {
+        klaviyo.push(['forms', {
             onSubmitSuccess: function ($form, response) {
                 // Form submission was successful.
         
@@ -48,11 +47,11 @@
                     page_url: pageUrl
                 };
         
-                _learnq.push(['identify', {
+                klaviyo.push(['identify', {
                     '$email': email
                 }]);
         
-                _learnq.push(['track', 'User Page Tracking', metadata]);
+                klaviyo.push(['track', 'User Page Tracking', metadata]);
         
             }
         }]);
