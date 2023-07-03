@@ -11,7 +11,7 @@ class PagesController < Sinatra::Base
                 :expires => Time.now + 3600,
                 :secure => request.secure?,
                 :httponly => true,
-                :samesite => "Strict"
+                :same_site => "Strict"
             })
         end
     end
@@ -38,7 +38,7 @@ class PagesController < Sinatra::Base
             :expires => Time.now + 3600,
             :secure => request.secure?,
             :httponly =>true,
-            :samesite => "Strict"
+            :same_site => "Strict"
         })
         redirect '/site2'
         end

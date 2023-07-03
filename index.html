@@ -22,15 +22,15 @@
 <body>
     <h1>Site 1 - Page 1</h1>
 
-    <div class="klaviyo-form-TEwA9H"></div>
+    <div class="_learnq-form-TEwA9H"></div>
     
     <script type="text/javascript">
-        var klaviyo = window.klaviyo || [];
+        var _learnq = window._learnq || [];
 
-        klaviyo.push(['publicApiKey', 'SEPBCg']); // replace with your public API key
+        _learnq.push(['publicApiKey', 'SEPBCg']); // replace with your public API key
 
         // Define the onSubmitSuccess callback for the form.
-        klaviyo.push(['forms', {
+        _learnq.push(['forms', {
             onSubmitSuccess: function ($form, response) {
                 // Form submission was successful.
         
@@ -40,28 +40,28 @@
                 // Set a cookie with the email value.
                 setCookie('userEmailKla', email, 1);
         
-                // Push data to Klaviyo
+                // Push data to _learnq
                 var pageUrl = window.location.href;
         
                 var metadata = {
                     page_url: pageUrl
                 };
         
-                klaviyo.push(['identify', {
+                _learnq.push(['identify', {
                     '$email': email
                 }]);
         
-                klaviyo.push(['track', 'User Page Tracking', metadata]);
+                _learnq.push(['track', 'User Page Tracking', metadata]);
         
             }
         }]);
 
-        // Load the Klaviyo scripts.
+        // Load the _learnq scripts.
         (function () {
             var b = document.createElement('script');
             b.type = 'text/javascript';
             b.async = true;
-            b.src = '//static.klaviyo.com/onsite/js/klaviyo.js?company_id=SEPBCg'; // replace with your public API key
+            b.src = '//static._learnq.com/onsite/js/_learnq.js?company_id=SEPBCg'; // replace with your public API key
             var a = document.getElementsByTagName('script')[0];
             a.parentNode.insertBefore(b, a);
         })();
