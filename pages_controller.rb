@@ -1,7 +1,7 @@
 require 'sinatra/base'
 
 class PagesController < Sinatra::Base
-  get '/site1' do
+  get '/' do
     @email = request.cookies['userEmail']
     erb :site1
   end
