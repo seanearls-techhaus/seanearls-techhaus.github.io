@@ -18,7 +18,7 @@
 
     <!-- Klaviyo tracking code -->
     <script type="text/javascript">
-        window.onload = function() {
+        window.addEventListener("load", function() {
             // Get the email from the cookie
             var email = getCookie('userEmailKla');
             console.log("Email: ", email);
@@ -43,7 +43,7 @@
 
             // Track an event with Klaviyo
             klaviyo.push(['track', 'User Page Tracking', metadata]);
-        }
+        });
     </script>
 
     <script type="text/javascript" src="//static.klaviyo.com/onsite/js/klaviyo.js?company_id=SEPBCg"></script>
