@@ -3,7 +3,7 @@
 <head>
     <title>Site 1 - Page 2</title>
 
-    <!--<script type="text/javascript">
+    <script type="text/javascript">
 
         // Function to get the value of a cookie
         function getCookie(name) {
@@ -14,16 +14,16 @@
             }
             return "";
         }
-    </script>-->
+    </script>
 
-    <script type="text/javascript" src="//static.klaviyo.com/onsite/js/klaviyo.js?company_id=SEPBCg"></script>
+    <script type="text/javascript" src="//static.klaviyo.com/onsite/js/klaviyo.js?company_id=SEPBCg" async></script>
 
     <!-- Klaviyo tracking code -->
     <script type="text/javascript">
         window.addEventListener("load", function() {
             // Get the email from the cookie
-            //var email = getCookie('userEmailKla');
-            console.log("Email: ", email);
+            var email = getCookie('userEmailKla');
+            console.log("Email: ", getCookie('userEmailKla'));
 
             // Include Klaviyo's JavaScript SDK
             var klaviyo = window.klaviyo || [];
@@ -47,9 +47,6 @@
             klaviyo.push(['track', 'User Page Tracking', metadata]);
         });
     </script>
-
-    
-
 </head>
 <body>
     <h1>Site 1 - Page 2</h1>
@@ -61,3 +58,4 @@
     
 </body>
 </html>
+
