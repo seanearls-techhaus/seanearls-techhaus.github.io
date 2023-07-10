@@ -41,6 +41,7 @@
         }
 
         var klaviyoCookie = getKlaviyoCookie();
+        var parsedCookie = JSON.parse(klaviyoCookie);
         console.log(klaviyoCookie);
 
 
@@ -50,7 +51,7 @@
             body: JSON.stringify({exchange_id: 'EXCHANGE_ID'})
         };
 
-        fetch('https://a.klaviyo.com/api/v2/people/exchange?api_key=SEBPg', options)
+        fetch('https://a.klaviyo.com/api/v2/people/exchange?api_key=SEPBg', options)
             .then(response => response.json())
             .then(response => console.log(response))
             .catch(err => console.error(err));
