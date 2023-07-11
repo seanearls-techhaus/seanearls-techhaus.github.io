@@ -4,7 +4,6 @@
     <title>Site 1 - Page 2</title>
 
     <script type="text/javascript">
-
         // Function to get the value of a cookie
         function getCookie(name) {
             var value = "; " + document.cookie;
@@ -25,7 +24,8 @@
     <script type="text/javascript">
 
         function getKlaviyoCookie() {
-            var name = "_kx=";
+            // Changed the cookie name from "_kx=" to "__kla_id"
+            var name = "__kla_id=";
             var decodedCookie = decodeURIComponent(document.cookie);
             var ca = decodedCookie.split(';');
             for(var i = 0; i < ca.length; i++) {
@@ -42,13 +42,12 @@
 
         var klaviyoCookie = getKlaviyoCookie();
         var parsedCookie = JSON.parse(klaviyoCookie);
-        console.log(klaviyoCookie);
-
+        console.log(parsedCookie.$exchange_id);
 
         const options = {
             method: 'POST',
             headers: {'accept': 'application/json', 'content-type': 'application/json'},
-            body: JSON.stringify({exchange_id: 'EXCHANGE_ID'})
+            body: JSON.stringify({exchange_id: parsedCookie.$exchange_id}) // Use the exchange id from the parsed cookie
         };
 
         fetch('https://a.klaviyo.com/api/v2/people/exchange?api_key=SEPBg', options)
@@ -98,4 +97,3 @@
     
 </body>
 </html>
-
