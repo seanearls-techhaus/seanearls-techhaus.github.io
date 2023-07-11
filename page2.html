@@ -47,7 +47,7 @@
         const options = {
             method: 'POST',
             headers: {'accept': 'application/json', 'content-type': 'application/json'},
-            body: JSON.stringify({exchange_id: parsedCookie.$exchange_id}) // Use the exchange id from the parsed cookie
+            body: JSON.stringify({exchange_id: parsedCookie.$exchangl}) // Use the exchange id from the parsed cookie
         };
 
         fetch('https://a.klaviyo.com/api/v2/people/exchange?api_key=SEPBg', options)
