@@ -41,7 +41,7 @@
         }
 
         var klaviyoCookie = getKlaviyoCookie();
-        var parsedCookie = JSON.parse(klaviyoCookie);
+        var parsedCookie = JSON.parse(atob(klaviyoCookie));
         console.log(parsedCookie.$exchange_id);
 
         const options = {
